@@ -80,7 +80,7 @@ Fine-tuning and deploying a BERTopic model on SageMaker with your own scripts an
 .. toctree::
    :maxdepth: 1
 
-   pytorch_extend_container_train_deploy/BERTtopic_extending_container
+   pytorch_extend_container_train_deploy_bertopic/BERTtopic_extending_container
 
 
 Bring Your Own Pipe-Mode Algorithm
