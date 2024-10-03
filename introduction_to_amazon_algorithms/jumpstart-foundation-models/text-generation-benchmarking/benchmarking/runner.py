@@ -287,6 +287,7 @@ class Benchmarker:
             )
             return model.deploy(
                 endpoint_name=endpoint_name,
+                accept_eula=True,
                 **jumpstart_model_specs.get("deploy_args", {}),
             )
         elif model_specs:
@@ -302,6 +303,7 @@ class Benchmarker:
                 serializer=JSONSerializer(),
                 deserializer=JSONDeserializer(),
                 endpoint_name=endpoint_name,
+                accept_eula=True,
                 **model_specs["deploy_args"],
             )
         else:
@@ -373,12 +375,14 @@ class Benchmarker:
             value_format_dict = {
                 "TokenThroughput": "{:.2f}".format,
                 "LatencyPerToken.p90": int,
-                "CostToGenerate1MTokens": "${:,.2f}".format,
+                "Latency.p90": "{:,.0f}".format,
+                "CostToGenerate1MTokens": "${:,.2f}".format
             }
         if value_name_dict is None:
             value_name_dict = {
                 "LatencyPerToken.p90": "p90 latency (ms/token)",
                 "TokenThroughput": "throughput (tokens/s)",
+                "Latency.p90": "p90 request latency (ms)",
                 "CostToGenerate1MTokens": "cost to generate 1M tokens ($)",
             }
 
